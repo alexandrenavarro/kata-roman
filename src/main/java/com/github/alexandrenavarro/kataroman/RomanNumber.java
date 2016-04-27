@@ -9,9 +9,10 @@ package com.github.alexandrenavarro.kataroman;
  */
 public enum RomanNumber {
     
-    M(1000), CM(900), D(500), CD(400), C(100), XC(90), L(50),  XL(40), X(10), IX(9),  V(5), IV(4), I(1);
+    // Must be order by decimal number desc because of the mapToRomanNumberString 
+    M(1000), CM(900), D(500), CD(400), C(100), XC(90), L(50), XL(40), X(10), IX(9), V(5), IV(4), I(1);
     
-    private final int numericNumber;
+    private final int decimalNumber;
     
     /**
      * Constructor.
@@ -19,17 +20,33 @@ public enum RomanNumber {
      * @param aRomanLetter
      * @param aNumber
      */
-    private RomanNumber(int aNumber) {
-        this.numericNumber = aNumber;
+    private RomanNumber(final int aNumber) {
+        this.decimalNumber = aNumber;
     }
 
+
     /**
-     * getNumericNumber.
+     * getDecimalNumber.
      *
      * @return
      */
-    public int getNumericNumber() {
-        return this.numericNumber;
+    public int getDecimalNumber() {
+        return this.decimalNumber;
+    }
+    
+    /**
+     * mapToRomanNumberString.
+     *
+     * @param aDecimalNumber
+     * @return
+     */
+    public static String mapToRomanNumberString(final int aDecimalNumber) {
+        for (final RomanNumber roman : RomanNumber.values()) {
+            if (aDecimalNumber >= roman.getDecimalNumber()) {
+                return roman.toString() + mapToRomanNumberString(aDecimalNumber - roman.getDecimalNumber());
+            }
+        }
+        return "";
     }
 
     

@@ -8,13 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * <p>RomanMapperTest. </p>
+ * <p>RomanNumberTest. </p>
  *
  * @author anavarro - Apr 27, 2016
  *
  */
 @RunWith(JUnitParamsRunner.class)
-public final class RomanMapperTest {
+public final class RomanNumberTest {
 
     /**
      * should_return_roman_number_when_a_numeric_number_is_set.
@@ -28,7 +28,7 @@ public final class RomanMapperTest {
             "XCIX, 99", "C, 100", "DI, 501", "DL, 550", "DXXX, 530", "DCCVII, 707", "DCCCXC, 890", "MD, 1500", "MDCCC, 1800", "CM, 900", "M, 1000",
             "MMM, 3000" })
     public void should_return_roman_number_when_a_numeric_number_is_set(final String romanNumber, final int numericNumber) {
-        assertThat(RomanNumberMapper.mapToRomanNumber(numericNumber)).isEqualTo(romanNumber);
+        assertThat(RomanNumber.mapToRomanNumberString(numericNumber)).isEqualTo(romanNumber);
     }
 
 }
